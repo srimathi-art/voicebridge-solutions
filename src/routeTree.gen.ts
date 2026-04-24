@@ -11,6 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TechnologyRouteImport } from './routes/technology'
 import { Route as ProductRouteImport } from './routes/product'
+import { Route as ModulesRouteImport } from './routes/modules'
+import { Route as MeetRouteImport } from './routes/meet'
+import { Route as LectureRouteImport } from './routes/lecture'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -23,6 +26,21 @@ const TechnologyRoute = TechnologyRouteImport.update({
 const ProductRoute = ProductRouteImport.update({
   id: '/product',
   path: '/product',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModulesRoute = ModulesRouteImport.update({
+  id: '/modules',
+  path: '/modules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetRoute = MeetRouteImport.update({
+  id: '/meet',
+  path: '/meet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LectureRoute = LectureRouteImport.update({
+  id: '/lecture',
+  path: '/lecture',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -45,6 +63,9 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/lecture': typeof LectureRoute
+  '/meet': typeof MeetRoute
+  '/modules': typeof ModulesRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
 }
@@ -52,6 +73,9 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/lecture': typeof LectureRoute
+  '/meet': typeof MeetRoute
+  '/modules': typeof ModulesRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
 }
@@ -60,21 +84,52 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
+  '/lecture': typeof LectureRoute
+  '/meet': typeof MeetRoute
+  '/modules': typeof ModulesRoute
   '/product': typeof ProductRoute
   '/technology': typeof TechnologyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/contact' | '/product' | '/technology'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/lecture'
+    | '/meet'
+    | '/modules'
+    | '/product'
+    | '/technology'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/contact' | '/product' | '/technology'
-  id: '__root__' | '/' | '/about' | '/contact' | '/product' | '/technology'
+  to:
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/lecture'
+    | '/meet'
+    | '/modules'
+    | '/product'
+    | '/technology'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/contact'
+    | '/lecture'
+    | '/meet'
+    | '/modules'
+    | '/product'
+    | '/technology'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
+  LectureRoute: typeof LectureRoute
+  MeetRoute: typeof MeetRoute
+  ModulesRoute: typeof ModulesRoute
   ProductRoute: typeof ProductRoute
   TechnologyRoute: typeof TechnologyRoute
 }
@@ -93,6 +148,27 @@ declare module '@tanstack/react-router' {
       path: '/product'
       fullPath: '/product'
       preLoaderRoute: typeof ProductRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/modules': {
+      id: '/modules'
+      path: '/modules'
+      fullPath: '/modules'
+      preLoaderRoute: typeof ModulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meet': {
+      id: '/meet'
+      path: '/meet'
+      fullPath: '/meet'
+      preLoaderRoute: typeof MeetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lecture': {
+      id: '/lecture'
+      path: '/lecture'
+      fullPath: '/lecture'
+      preLoaderRoute: typeof LectureRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -123,6 +199,9 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
+  LectureRoute: LectureRoute,
+  MeetRoute: MeetRoute,
+  ModulesRoute: ModulesRoute,
   ProductRoute: ProductRoute,
   TechnologyRoute: TechnologyRoute,
 }
