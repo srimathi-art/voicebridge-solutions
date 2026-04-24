@@ -109,7 +109,7 @@ function Contact() {
                 {!sent && <Send size={14} className="transition-transform group-hover:translate-x-0.5" />}
               </button>
               <p className="text-center text-xs text-muted-foreground">
-                We typically respond within 1–2 business days.
+                Let's build a more inclusive future together.
               </p>
             </div>
           </form>
