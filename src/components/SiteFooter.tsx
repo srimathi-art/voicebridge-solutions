@@ -52,10 +52,10 @@ export function SiteFooter() {
               Navigate
             </h4>
             <ul className="mt-4 space-y-2 text-sm">
-              <li><Link to="/" className="text-muted-foreground hover:text-foreground">Home</Link></li>
-              <li><Link to="/about" className="text-muted-foreground hover:text-foreground">About</Link></li>
-              <li><Link to="/product" className="text-muted-foreground hover:text-foreground">Product</Link></li>
-              <li><Link to="/technology" className="text-muted-foreground hover:text-foreground">Technology</Link></li>
+              <li><Link to="/" className="text-muted-foreground hover:text-foreground">Overview</Link></li>
+              <li><Link to="/meet" className="text-muted-foreground hover:text-foreground">Meet Mode</Link></li>
+              <li><Link to="/modules" className="text-muted-foreground hover:text-foreground">Modules Mode</Link></li>
+              <li><Link to="/lecture" className="text-muted-foreground hover:text-foreground">Lecture Mode</Link></li>
               <li><Link to="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
             </ul>
           </div>

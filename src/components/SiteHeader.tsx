@@ -3,10 +3,10 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/product", label: "Product" },
-  { to: "/technology", label: "Technology" },
+  { to: "/", label: "Overview" },
+  { to: "/meet", label: "Meet" },
+  { to: "/modules", label: "Modules" },
+  { to: "/lecture", label: "Lecture" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -55,6 +55,7 @@ export function SiteHeader() {
                   className:
                     "rounded-lg px-3.5 py-2 text-sm text-foreground bg-white/5",
                 }}
+                activeOptions={{ exact: true }}
               >
                 {l.label}
               </Link>
@@ -93,6 +94,7 @@ export function SiteHeader() {
                   className:
                     "block rounded-lg px-3 py-2.5 text-sm text-foreground bg-white/10",
                 }}
+                activeOptions={{ exact: true }}
               >
                 {l.label}
               </Link>
