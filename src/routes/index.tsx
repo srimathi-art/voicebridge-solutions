@@ -95,7 +95,7 @@ function Home() {
                 </h1>
               </Reveal>
 
-              <Reveal delay={150}>
+              <Reveal delay={200}>
                 <p className="mt-5 max-w-xl text-xl font-medium text-foreground/90">
                   Empowering Communication for Deaf and Blind Individuals.
                 </p>
