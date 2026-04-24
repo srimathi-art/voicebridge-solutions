@@ -101,7 +101,7 @@ function Home() {
                 </p>
               </Reveal>
 
-              <Reveal delay={200}>
+              <Reveal delay={300}>
                 <p className="mt-5 max-w-xl text-base text-muted-foreground">
                   S2V is an AI-powered assistive technology that transforms sign language
                   into voice and converts speech into text, enabling seamless communication
