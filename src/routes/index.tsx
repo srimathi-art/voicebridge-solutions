@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -184,8 +185,8 @@ function Home() {
                 { icon: Cpu, label: "AI Processing", desc: "Recognize + translate", sub: "On-device intelligence" },
                 { icon: Volume2, label: "Output", desc: "Voice or text", sub: "Spoken or captioned" },
               ].map((step, i) => (
-                <>
-                  <Reveal key={step.label} delay={(i * 150) as 0 | 100 | 200 | 300}>
+                <Fragment key={step.label}>
+                  <Reveal delay={(i * 150) as 0 | 100 | 200 | 300}>
                     <div className="group relative h-full rounded-3xl glass p-7 transition-all hover:-translate-y-1 hover:glow-soft">
                       <div className="flex items-center justify-between">
                         <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand glow">
@@ -201,7 +202,7 @@ function Home() {
                     </div>
                   </Reveal>
                   {i < 2 && (
-                    <Reveal key={`arr-${i}`} delay={((i * 150 + 100) as 0 | 100 | 200 | 300)} className="hidden md:block">
+                    <Reveal delay={((i * 150 + 100) as 0 | 100 | 200 | 300)} className="hidden md:block">
                       <div className="flex items-center justify-center">
                         <div className="relative h-[2px] w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent">
                           <span className="absolute -top-1 right-0 inline-flex h-2 w-2 animate-pulse rounded-full bg-accent glow" />
@@ -209,7 +210,7 @@ function Home() {
                       </div>
                     </Reveal>
                   )}
-                </>
+                </Fragment>
               ))}
             </div>
           </div>
