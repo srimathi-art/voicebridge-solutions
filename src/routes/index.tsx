@@ -5,12 +5,13 @@ import {
   Hand,
   Mic,
   Cpu,
-  Eye,
+  Volume2,
+  Users,
   GraduationCap,
   Briefcase,
   Hospital,
-  Users,
   Sparkles,
+  Eye,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
 import heroOrb from "@/assets/hero-orb.jpg";
@@ -19,52 +20,57 @@ import waveform from "@/assets/waveform.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "S2V — Bridging Silence and Sound" },
+      { title: "S2V — Communication Without Barriers" },
       {
         name: "description",
         content:
-          "S2V is AI-powered assistive technology that converts sign language to voice and voice to text in real-time, empowering deaf and blind communication.",
+          "S2V is an intelligent assistive device that translates sign language into voice and converts speech into text in real time.",
       },
-      { property: "og:title", content: "S2V — Bridging Silence and Sound" },
+      { property: "og:title", content: "S2V — Sign to Voice System" },
       {
         property: "og:description",
-        content: "AI-powered communication for deaf and blind individuals.",
+        content: "An assistive device that bridges silence and sound — in real time.",
       },
     ],
   }),
   component: Home,
 });
 
-const features = [
+const modes = [
   {
-    icon: Users,
+    to: "/meet" as const,
+    badge: "Meet",
+    color: "from-emerald-400/30 to-emerald-500/10",
+    dot: "bg-emerald-400",
     title: "Meet Mode",
-    desc: "Real-time conversational translation between signers, speakers and listeners.",
+    tag: "Real-time communication",
+    desc: "Talk without speaking. Sign-to-voice and voice-to-text, live.",
   },
   {
-    icon: GraduationCap,
+    to: "/modules" as const,
+    badge: "Modules",
+    color: "from-amber-400/30 to-amber-500/10",
+    dot: "bg-amber-400",
     title: "Modules Mode",
-    desc: "Interactive lessons to learn and practice sign language at your own pace.",
+    tag: "Learn and practice signs",
+    desc: "Guided lessons with accuracy feedback. Build fluency, fast.",
   },
   {
-    icon: Briefcase,
+    to: "/lecture" as const,
+    badge: "Lecture",
+    color: "from-sky-400/30 to-sky-500/10",
+    dot: "bg-sky-400",
     title: "Lecture Mode",
-    desc: "Inclusive classroom experience — captions, speech and sign in one stream.",
+    tag: "Accessible classroom support",
+    desc: "Speech becomes captions. Signs become voice. Everyone learns.",
   },
-];
-
-const tech = [
-  { icon: Cpu, label: "TensorFlow", note: "AI & ML" },
-  { icon: Hand, label: "MediaPipe", note: "Hand tracking" },
-  { icon: Sparkles, label: "Raspberry Pi", note: "Embedded edge" },
-  { icon: Mic, label: "Speech API", note: "STT & TTS" },
 ];
 
 const useCases = [
   { icon: GraduationCap, title: "Education", desc: "Inclusive classrooms for every learner." },
   { icon: Users, title: "Public spaces", desc: "Conversations without barriers." },
   { icon: Briefcase, title: "Workplaces", desc: "Meetings everyone can join." },
-  { icon: Hospital, title: "Healthcare", desc: "Clear communication when it matters most." },
+  { icon: Hospital, title: "Healthcare", desc: "Clear communication when it matters." },
 ];
 
 function Home() {
@@ -81,7 +87,7 @@ function Home() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                     <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
                   </span>
-                  Assistive AI · Now in development
+                  Assistive product · The S2V System
                 </span>
               </Reveal>
 
@@ -91,34 +97,33 @@ function Home() {
                   <br />
                   <span className="text-foreground">Sign to Voice</span>
                   <br />
-                  <span className="text-muted-foreground">Solutions.</span>
+                  <span className="text-muted-foreground">System.</span>
                 </h1>
               </Reveal>
 
               <Reveal delay={200}>
-                <p className="mt-5 max-w-xl text-xl font-medium text-foreground/90">
-                  Empowering Communication for Deaf and Blind Individuals.
+                <p className="mt-5 max-w-xl font-display text-2xl text-foreground/90">
+                  "Communication Without Barriers."
                 </p>
               </Reveal>
 
               <Reveal delay={300}>
                 <p className="mt-5 max-w-xl text-base text-muted-foreground">
-                  S2V is an AI-powered assistive technology that transforms sign language
-                  into voice and converts speech into text, enabling seamless communication
-                  for deaf and blind individuals. Our solution combines intelligent hardware
-                  and smart software to create a truly inclusive experience.
+                  S2V is an intelligent assistive device that translates sign language into voice
+                  and converts speech into text in real time. Designed for accessibility, it
+                  enables seamless interaction between deaf, mute, and blind individuals.
                 </p>
               </Reveal>
 
-              <Reveal delay={300}>
+              <Reveal delay={400}>
                 <div className="mt-9 flex flex-wrap items-center gap-4">
-                  <Link
-                    to="/product"
+                  <a
+                    href="#how"
                     className="group inline-flex items-center gap-2 rounded-2xl bg-gradient-brand px-6 py-3.5 text-sm font-medium text-primary-foreground transition-all hover:shadow-[0_0_50px_-5px_oklch(0.7_0.25_285_/_0.8)]"
                   >
-                    Explore our solution
+                    Explore how it works
                     <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                  </Link>
+                  </a>
                   <a
                     href="#demo"
                     className="inline-flex items-center gap-2 rounded-2xl glass px-6 py-3.5 text-sm font-medium transition-all hover:bg-white/10"
@@ -126,23 +131,6 @@ function Home() {
                     <Play size={14} /> Watch demo
                   </a>
                 </div>
-              </Reveal>
-
-              <Reveal delay={400}>
-                <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-white/5 pt-8">
-                  <div>
-                    <dt className="text-xs uppercase tracking-widest text-muted-foreground">Latency</dt>
-                    <dd className="mt-1 font-display text-2xl font-semibold text-gradient">&lt;120ms</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-widest text-muted-foreground">Modes</dt>
-                    <dd className="mt-1 font-display text-2xl font-semibold text-gradient">3</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-widest text-muted-foreground">On-device</dt>
-                    <dd className="mt-1 font-display text-2xl font-semibold text-gradient">AI</dd>
-                  </div>
-                </dl>
               </Reveal>
             </div>
 
@@ -174,62 +162,96 @@ function Home() {
         </div>
       </section>
 
-      {/* ABOUT STRIP */}
-      <section className="relative">
+      {/* HOW IT WORKS */}
+      <section id="how" className="relative scroll-mt-24">
         <div className="container-page">
-          <Reveal className="rounded-3xl glass-strong p-10 md:p-14">
-            <div className="grid gap-10 md:grid-cols-3">
-              <div className="md:col-span-1">
-                <p className="text-xs uppercase tracking-[0.3em] text-accent">About S2V</p>
-                <h2 className="mt-4 font-display text-3xl font-semibold leading-tight md:text-4xl">
-                  A student-driven startup, building for the next billion conversations.
-                </h2>
-              </div>
-              <div className="grid gap-6 md:col-span-2 md:grid-cols-2">
-                <div>
-                  <h3 className="text-sm font-semibold text-accent">Our mission</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Empower inclusivity through technology that adapts to people — not the
-                    other way around.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-sm font-semibold text-accent">Our vision</h3>
-                  <p className="mt-2 text-muted-foreground">
-                    A world without communication barriers, where every voice is heard and
-                    every sign is understood.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-accent">How it works</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">
+              Three steps. <span className="text-gradient">One conversation.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              S2V uses camera-based gesture detection, AI models, and voice processing to deliver
+              real-time communication.
+            </p>
           </Reveal>
+
+          {/* Animated flow */}
+          <div className="mt-14">
+            <div className="grid gap-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:items-center">
+              {[
+                { icon: Hand, label: "Input", desc: "Gesture or voice", sub: "Camera + microphone" },
+                { icon: Cpu, label: "AI Processing", desc: "Recognize + translate", sub: "On-device intelligence" },
+                { icon: Volume2, label: "Output", desc: "Voice or text", sub: "Spoken or captioned" },
+              ].map((step, i) => (
+                <>
+                  <Reveal key={step.label} delay={(i * 150) as 0 | 100 | 200 | 300}>
+                    <div className="group relative h-full rounded-3xl glass p-7 transition-all hover:-translate-y-1 hover:glow-soft">
+                      <div className="flex items-center justify-between">
+                        <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand glow">
+                          <step.icon size={20} className="text-primary-foreground" />
+                        </span>
+                        <span className="text-xs uppercase tracking-widest text-muted-foreground">
+                          0{i + 1}
+                        </span>
+                      </div>
+                      <h3 className="mt-6 font-display text-xl font-semibold">{step.label}</h3>
+                      <p className="mt-1 text-sm text-foreground/80">{step.desc}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{step.sub}</p>
+                    </div>
+                  </Reveal>
+                  {i < 2 && (
+                    <Reveal key={`arr-${i}`} delay={((i * 150 + 100) as 0 | 100 | 200 | 300)} className="hidden md:block">
+                      <div className="flex items-center justify-center">
+                        <div className="relative h-[2px] w-full bg-gradient-to-r from-transparent via-accent/60 to-transparent">
+                          <span className="absolute -top-1 right-0 inline-flex h-2 w-2 animate-pulse rounded-full bg-accent glow" />
+                        </div>
+                      </div>
+                    </Reveal>
+                  )}
+                </>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* MODES */}
-      <section id="modes" className="relative mt-32">
+      {/* MODES OVERVIEW */}
+      <section id="modes" className="relative mt-32 scroll-mt-24">
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Modes</p>
-            <h2 className="mt-4 font-display text-4xl font-semibold md:text-5xl">
-              One device. <span className="text-gradient">Three intelligent modes.</span>
+            <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">
+              Three <span className="text-gradient">smart modes.</span>
             </h2>
+            <p className="mt-4 text-muted-foreground">
+              S2V adapts to different environments through three intelligent modes — pick one to
+              explore in detail.
+            </p>
           </Reveal>
 
           <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {features.map((f, i) => (
-              <Reveal key={f.title} delay={(i * 100) as 0 | 100 | 200}>
-                <article className="group relative h-full overflow-hidden rounded-3xl glass p-7 transition-all duration-500 hover:-translate-y-1 hover:glow-soft">
-                  <div className="absolute inset-x-0 -top-px mx-auto h-px max-w-[60%] bg-gradient-to-r from-transparent via-accent/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-brand glow">
-                    <f.icon size={20} className="text-primary-foreground" />
-                  </span>
-                  <h3 className="mt-6 font-display text-xl font-semibold">{f.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{f.desc}</p>
-                  <div className="mt-6 flex items-center gap-1.5 text-xs text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                    Learn more <ArrowRight size={12} />
+            {modes.map((m, i) => (
+              <Reveal key={m.to} delay={(i * 100) as 0 | 100 | 200}>
+                <Link
+                  to={m.to}
+                  className="group relative block h-full overflow-hidden rounded-3xl glass p-7 transition-all duration-500 hover:-translate-y-2 hover:glow-soft"
+                >
+                  <div className={`absolute -inset-px -z-10 rounded-3xl bg-gradient-to-br ${m.color} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+                  <div className="flex items-center justify-between">
+                    <span className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground">
+                      <span className={`h-1.5 w-1.5 rounded-full ${m.dot}`} />
+                      {m.badge}
+                    </span>
+                    <span className="text-xs text-muted-foreground">0{i + 1}</span>
                   </div>
-                </article>
+                  <h3 className="mt-8 font-display text-2xl font-semibold">{m.title}</h3>
+                  <p className="mt-1 text-sm text-accent">{m.tag}</p>
+                  <p className="mt-3 text-sm text-muted-foreground">{m.desc}</p>
+                  <div className="mt-8 inline-flex items-center gap-1.5 rounded-xl bg-gradient-brand px-4 py-2 text-xs font-medium text-primary-foreground transition-all group-hover:translate-x-1 group-hover:glow">
+                    Explore <ArrowRight size={12} />
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -249,29 +271,45 @@ function Home() {
             <div className="grid items-center gap-10 md:grid-cols-2">
               <div>
                 <p className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-accent">
-                  <Eye size={12} /> Built for blind users
+                  <Eye size={12} /> Voice navigation
                 </p>
                 <h2 className="mt-5 font-display text-4xl font-semibold leading-tight md:text-5xl">
-                  Accessibility,
+                  Designed for
                   <br />
-                  <span className="text-gradient">at the center.</span>
+                  <span className="text-gradient">everyone.</span>
                 </h2>
                 <p className="mt-5 max-w-lg text-muted-foreground">
-                  Voice command navigation. Audio-based guidance. Haptic feedback. Every
-                  interaction is engineered so that no one is left behind.
+                  S2V includes voice command navigation, allowing blind users to control the
+                  entire system using simple voice instructions.
                 </p>
               </div>
               <ul className="space-y-3">
                 {[
-                  "Voice-first navigation across the entire system",
-                  "Audio guidance with spatial cues",
-                  "Haptic feedback for silent confirmation",
-                  "Screen-reader optimized interfaces",
+                  '"Open Meet Mode"',
+                  '"Start Lecture Mode"',
+                  '"Repeat Output"',
+                  '"Switch to Modules"',
                 ].map((t, i) => (
                   <Reveal as="li" key={t} delay={(i * 100) as 0 | 100 | 200 | 300}>
-                    <div className="flex items-start gap-3 rounded-2xl glass p-4">
-                      <span className="mt-1 inline-flex h-2 w-2 flex-none rounded-full bg-accent glow" />
-                      <span className="text-sm text-foreground">{t}</span>
+                    <div className="flex items-center gap-3 rounded-2xl glass p-4">
+                      <span className="inline-flex h-9 w-9 flex-none items-center justify-center rounded-xl bg-gradient-brand glow">
+                        <Mic size={14} className="text-primary-foreground" />
+                      </span>
+                      <span className="font-display text-sm">{t}</span>
+                      {/* audio wave */}
+                      <span className="ml-auto flex items-end gap-0.5">
+                        {[8, 14, 20, 14, 10].map((h, k) => (
+                          <span
+                            key={k}
+                            className="w-0.5 rounded-full bg-accent"
+                            style={{
+                              height: `${h}px`,
+                              animation: `pulse-glow 1.${k}s ease-in-out infinite`,
+                              animationDelay: `${k * 0.1}s`,
+                            }}
+                          />
+                        ))}
+                      </span>
                     </div>
                   </Reveal>
                 ))}
@@ -281,50 +319,18 @@ function Home() {
         </div>
       </section>
 
-      {/* TECH GRID */}
-      <section className="relative mt-32">
-        <div className="container-page">
-          <Reveal className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-accent">Technology</p>
-              <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">
-                A stack built for <span className="text-gradient">real-time intelligence.</span>
-              </h2>
-            </div>
-            <Link
-              to="/technology"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-            >
-              See full stack <ArrowRight size={14} />
-            </Link>
-          </Reveal>
-
-          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {tech.map((t, i) => (
-              <Reveal key={t.label} delay={(i * 100) as 0 | 100 | 200 | 300}>
-                <div className="group flex h-full flex-col justify-between rounded-2xl glass p-6 transition-all hover:-translate-y-1 hover:glow-soft">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 transition-colors group-hover:bg-gradient-brand">
-                    <t.icon size={18} />
-                  </span>
-                  <div className="mt-10">
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground">{t.note}</p>
-                    <p className="mt-1 font-display text-lg font-semibold">{t.label}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* USE CASES */}
+      {/* IMPACT */}
       <section className="relative mt-32">
         <div className="container-page">
           <Reveal className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-accent">Impact</p>
             <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">
-              Where S2V <span className="text-gradient">makes a difference.</span>
+              Why S2V <span className="text-gradient">matters.</span>
             </h2>
+            <p className="mt-4 text-muted-foreground">
+              S2V creates inclusive communication by breaking barriers between speech and silence.
+              It empowers individuals in education, public interaction, and daily life.
+            </p>
           </Reveal>
 
           <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -342,10 +348,21 @@ function Home() {
       </section>
 
       {/* DEMO */}
-      <section id="demo" className="relative mt-32">
+      <section id="demo" className="relative mt-32 scroll-mt-24">
         <div className="container-page">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <p className="text-xs uppercase tracking-[0.3em] text-accent">Demo</p>
+            <h2 className="mt-3 font-display text-4xl font-semibold md:text-5xl">
+              See it <span className="text-gradient">in action.</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Watch how S2V transforms communication through real-time gesture recognition and
+              voice conversion.
+            </p>
+          </Reveal>
+
           <Reveal>
-            <div className="relative mx-auto aspect-video max-w-5xl overflow-hidden rounded-[2rem] glass-strong glow">
+            <div className="relative mx-auto mt-12 aspect-video max-w-5xl overflow-hidden rounded-[2rem] glass-strong glow">
               <img
                 src={waveform}
                 alt="Demo preview"
@@ -379,11 +396,13 @@ function Home() {
         <div className="container-page">
           <Reveal className="relative overflow-hidden rounded-[2rem] bg-gradient-brand p-10 text-center md:p-16">
             <div className="absolute inset-0 -z-10 opacity-50 mix-blend-overlay" style={{ backgroundImage: `url(${heroOrb})`, backgroundSize: "cover" }} />
-            <h2 className="mx-auto max-w-2xl font-display text-4xl font-semibold leading-tight text-primary-foreground md:text-5xl">
+            <Sparkles className="mx-auto text-primary-foreground" size={28} />
+            <h2 className="mx-auto mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight text-primary-foreground md:text-5xl">
               Communication should never be a barrier.
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-primary-foreground/80">
-              Partner with us, fund the mission, or join the team building the future of inclusive communication.
+              Partner with us, fund the mission, or join the team building the future of inclusive
+              communication.
             </p>
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Link
@@ -393,10 +412,10 @@ function Home() {
                 Start a conversation <ArrowRight size={16} />
               </Link>
               <Link
-                to="/product"
+                to="/meet"
                 className="inline-flex items-center gap-2 rounded-2xl border border-white/30 px-6 py-3.5 text-sm font-medium text-primary-foreground hover:bg-white/10"
               >
-                See the product
+                Explore Meet Mode
               </Link>
             </div>
           </Reveal>

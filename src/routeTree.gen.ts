@@ -9,25 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TechnologyRouteImport } from './routes/technology'
-import { Route as ProductRouteImport } from './routes/product'
 import { Route as ModulesRouteImport } from './routes/modules'
 import { Route as MeetRouteImport } from './routes/meet'
 import { Route as LectureRouteImport } from './routes/lecture'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
-const TechnologyRoute = TechnologyRouteImport.update({
-  id: '/technology',
-  path: '/technology',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductRoute = ProductRouteImport.update({
-  id: '/product',
-  path: '/product',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ModulesRoute = ModulesRouteImport.update({
   id: '/modules',
   path: '/modules',
@@ -48,11 +35,6 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -61,95 +43,44 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/lecture': typeof LectureRoute
   '/meet': typeof MeetRoute
   '/modules': typeof ModulesRoute
-  '/product': typeof ProductRoute
-  '/technology': typeof TechnologyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/lecture': typeof LectureRoute
   '/meet': typeof MeetRoute
   '/modules': typeof ModulesRoute
-  '/product': typeof ProductRoute
-  '/technology': typeof TechnologyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/lecture': typeof LectureRoute
   '/meet': typeof MeetRoute
   '/modules': typeof ModulesRoute
-  '/product': typeof ProductRoute
-  '/technology': typeof TechnologyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/lecture'
-    | '/meet'
-    | '/modules'
-    | '/product'
-    | '/technology'
+  fullPaths: '/' | '/contact' | '/lecture' | '/meet' | '/modules'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/lecture'
-    | '/meet'
-    | '/modules'
-    | '/product'
-    | '/technology'
-  id:
-    | '__root__'
-    | '/'
-    | '/about'
-    | '/contact'
-    | '/lecture'
-    | '/meet'
-    | '/modules'
-    | '/product'
-    | '/technology'
+  to: '/' | '/contact' | '/lecture' | '/meet' | '/modules'
+  id: '__root__' | '/' | '/contact' | '/lecture' | '/meet' | '/modules'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   LectureRoute: typeof LectureRoute
   MeetRoute: typeof MeetRoute
   ModulesRoute: typeof ModulesRoute
-  ProductRoute: typeof ProductRoute
-  TechnologyRoute: typeof TechnologyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/technology': {
-      id: '/technology'
-      path: '/technology'
-      fullPath: '/technology'
-      preLoaderRoute: typeof TechnologyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/product': {
-      id: '/product'
-      path: '/product'
-      fullPath: '/product'
-      preLoaderRoute: typeof ProductRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/modules': {
       id: '/modules'
       path: '/modules'
@@ -178,13 +109,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -197,13 +121,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   LectureRoute: LectureRoute,
   MeetRoute: MeetRoute,
   ModulesRoute: ModulesRoute,
-  ProductRoute: ProductRoute,
-  TechnologyRoute: TechnologyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
