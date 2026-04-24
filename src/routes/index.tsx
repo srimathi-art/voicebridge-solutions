@@ -87,19 +87,26 @@ function Home() {
 
               <Reveal delay={100}>
                 <h1 className="mt-6 font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
-                  <span className="text-gradient animate-gradient">Sign to Voice.</span>
+                  <span className="text-gradient animate-gradient">S2V</span>
                   <br />
-                  <span className="text-foreground">Voice to text.</span>
+                  <span className="text-foreground">Sign to Voice</span>
                   <br />
-                  <span className="text-muted-foreground">In real time.</span>
+                  <span className="text-muted-foreground">Solutions.</span>
                 </h1>
               </Reveal>
 
               <Reveal delay={200}>
-                <p className="mt-7 max-w-xl text-lg text-muted-foreground">
-                  S2V is an AI-powered hardware and software system that bridges
-                  communication between silence and sound — empowering deaf and blind
-                  individuals in every conversation.
+                <p className="mt-5 max-w-xl text-xl font-medium text-foreground/90">
+                  Empowering Communication for Deaf and Blind Individuals.
+                </p>
+              </Reveal>
+
+              <Reveal delay={300}>
+                <p className="mt-5 max-w-xl text-base text-muted-foreground">
+                  S2V is an AI-powered assistive technology that transforms sign language
+                  into voice and converts speech into text, enabling seamless communication
+                  for deaf and blind individuals. Our solution combines intelligent hardware
+                  and smart software to create a truly inclusive experience.
                 </p>
               </Reveal>
 
