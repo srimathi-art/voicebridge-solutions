@@ -17,6 +17,7 @@ import {
 import { Reveal } from "@/components/Reveal";
 import heroOrb from "@/assets/hero-orb.jpg";
 import waveform from "@/assets/waveform.jpg";
+import hand from "@/assets/image.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -138,15 +139,35 @@ function Home() {
             <Reveal delay={200} className="relative">
               <div className="relative mx-auto aspect-square w-full max-w-[560px]">
                 <div className="absolute inset-0 animate-pulse-glow rounded-full bg-gradient-brand opacity-40 blur-3xl" />
-                <div className="relative h-full w-full overflow-hidden rounded-[2rem] glass-strong glow animate-float">
-                  <img
-                    src={heroOrb}
-                    alt="S2V neural communication visualization"
-                    width={1536}
-                    height={1024}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                <div className="relative h-full w-full overflow-hidden glass-strong glow">
+
+  <div className="flex h-full w-max animate-[marquee_25s_linear_infinite]">
+
+    {/* First set */}
+    <img src={hand} className="h-full w-auto object-cover" />
+    <img src={hand} className="h-full w-auto object-cover" />
+    <img src={hand} className="h-full w-auto object-cover" />
+    <img src={hand} className="h-full w-auto object-cover" />
+
+    {/* Duplicate set for seamless loop */}
+    <img src={hand} className="h-full w-auto object-cover" />
+    <img src={hand} className="h-full w-auto object-cover" />
+    <img src={hand} className="h-full w-auto object-cover" />
+    <img src={hand} className="h-full w-auto object-cover" />
+
+  </div>
+
+  {/* Animation */}
+  <style>
+    {`
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+    `}
+  </style>
+
+</div>
                 <div className="absolute -bottom-6 -left-6 hidden rounded-2xl glass-strong px-4 py-3 text-xs sm:block">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <span className="inline-flex h-2 w-2 animate-pulse rounded-full bg-accent" />

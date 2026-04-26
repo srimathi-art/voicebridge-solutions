@@ -41,28 +41,11 @@ function Contact() {
           </p>
 
           <div className="mt-10 space-y-4">
-            <a href="mailto:hello@s2v.ai" className="flex items-center gap-3 rounded-2xl glass p-4 hover:glow-soft">
+            <a href="mailto:sign2voice.team@gmail.com" className="flex items-center gap-3 rounded-2xl glass p-4 hover:glow-soft">
               <Mail size={18} className="text-accent" />
-              <span className="text-sm">hello@s2v.ai</span>
+              <span className="text-sm">sign2voice.team@gmail.com</span>
             </a>
-            <div className="flex gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-2xl glass py-4 text-sm hover:glow-soft"
-              >
-                <Linkedin size={16} /> LinkedIn
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="flex flex-1 items-center justify-center gap-2 rounded-2xl glass py-4 text-sm hover:glow-soft"
-              >
-                <Github size={16} /> GitHub
-              </a>
-            </div>
+           
           </div>
         </Reveal>
 

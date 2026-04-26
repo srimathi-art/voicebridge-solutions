@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "../assets/S2V.png"
 
 const links = [
   { to: "/", label: "Overview" },
@@ -23,26 +24,21 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-        scrolled ? "py-2" : "py-4"
-      }`}
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${scrolled ? "py-2" : "py-4"
+        }`}
     >
       <div className="container-page">
         <div
-          className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 ${
-            scrolled ? "glass-strong shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]" : ""
-          }`}
+          className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-500 ${scrolled ? "glass-strong shadow-[0_10px_40px_-20px_rgba(0,0,0,0.6)]" : ""
+            }`}
         >
           <Link to="/" className="group flex items-center gap-2.5">
-            <span className="relative inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-brand glow animate-gradient">
-              <span className="text-sm font-bold text-primary-foreground">S</span>
-            </span>
-            <span className="font-display text-base font-semibold tracking-tight">
+            <div className="rounded-xl p-2 shadow-lg hover:shadow-2xl transition-all duration-300">
+              <img src={Logo} className="w-12" alt="" />
+            </div>
+            {/* <span className="font-display text-base font-semibold tracking-tight">
               S2V
-              <span className="ml-1.5 hidden text-xs font-normal text-muted-foreground sm:inline">
-                Sign to Voice
-              </span>
-            </span>
+            </span> */}
           </Link>
 
           <nav className="hidden items-center gap-1 md:flex">

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Linkedin, Mail } from "lucide-react";
+import s2v from "@/assets/S2V.png";
 
 export function SiteFooter() {
   return (
@@ -9,8 +10,14 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-brand glow">
-                <span className="text-sm font-bold text-primary-foreground">S</span>
+              <span className="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-r from-purple-300 to-pink-200 glow">
+                 <span className="flex items-center justify-center w-5 rounded-xl glow ">
+  <img
+    src={s2v}
+    alt="S2V Logo"
+    className="h-full w-full object-cover"
+  />
+</span>
               </span>
               <span className="font-display text-base font-semibold">S2V</span>
             </div>
@@ -19,24 +26,7 @@ export function SiteFooter() {
               technology for the deaf and blind community.
             </p>
             <div className="mt-6 flex items-center gap-3">
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl glass transition-all hover:glow-soft hover:text-accent"
-              >
-                <Linkedin size={16} />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-xl glass transition-all hover:glow-soft hover:text-accent"
-              >
-                <Github size={16} />
-              </a>
+              
               <a
                 href="mailto:hello@s2v.ai"
                 aria-label="Email"
@@ -65,8 +55,8 @@ export function SiteFooter() {
               Contact
             </h4>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <li>hello@s2v.ai</li>
-              <li>Bengaluru, India</li>
+              <li>sign2voice.team@gmail.com</li>
+              <li>Salem, TamilNadu, India</li>
             </ul>
           </div>
         </div>
