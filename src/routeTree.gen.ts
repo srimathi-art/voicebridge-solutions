@@ -9,32 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ModulesRouteImport } from './routes/modules'
-import { Route as MeetRouteImport } from './routes/meet'
-import { Route as LectureRouteImport } from './routes/lecture'
-import { Route as ContactRouteImport } from './routes/contact'
 import { Route as IndexRouteImport } from './routes/index'
 
-const ModulesRoute = ModulesRouteImport.update({
-  id: '/modules',
-  path: '/modules',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MeetRoute = MeetRouteImport.update({
-  id: '/meet',
-  path: '/meet',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LectureRoute = LectureRouteImport.update({
-  id: '/lecture',
-  path: '/lecture',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -43,72 +19,28 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/lecture': typeof LectureRoute
-  '/meet': typeof MeetRoute
-  '/modules': typeof ModulesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/lecture': typeof LectureRoute
-  '/meet': typeof MeetRoute
-  '/modules': typeof ModulesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/lecture': typeof LectureRoute
-  '/meet': typeof MeetRoute
-  '/modules': typeof ModulesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/lecture' | '/meet' | '/modules'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/lecture' | '/meet' | '/modules'
-  id: '__root__' | '/' | '/contact' | '/lecture' | '/meet' | '/modules'
+  to: '/'
+  id: '__root__' | '/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContactRoute: typeof ContactRoute
-  LectureRoute: typeof LectureRoute
-  MeetRoute: typeof MeetRoute
-  ModulesRoute: typeof ModulesRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/modules': {
-      id: '/modules'
-      path: '/modules'
-      fullPath: '/modules'
-      preLoaderRoute: typeof ModulesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/meet': {
-      id: '/meet'
-      path: '/meet'
-      fullPath: '/meet'
-      preLoaderRoute: typeof MeetRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lecture': {
-      id: '/lecture'
-      path: '/lecture'
-      fullPath: '/lecture'
-      preLoaderRoute: typeof LectureRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -121,11 +53,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContactRoute: ContactRoute,
-  LectureRoute: LectureRoute,
-  MeetRoute: MeetRoute,
-  ModulesRoute: ModulesRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}
