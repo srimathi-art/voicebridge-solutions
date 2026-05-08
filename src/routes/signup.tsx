@@ -78,10 +78,28 @@ function Signup() {
               </div>
             </div>
             <div>
+              <label className="text-xs font-medium text-muted-foreground">Phone number</label>
+              <div className="mt-1 flex items-center gap-2 rounded-xl glass px-3 py-2.5 focus-within:ring-1 focus-within:ring-ring">
+                <Phone size={16} className="text-muted-foreground" />
+                <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="+91 90000 00000" className="w-full bg-transparent text-sm outline-none" />
+              </div>
+            </div>
+            <div>
               <label className="text-xs font-medium text-muted-foreground">Password</label>
               <div className="mt-1 flex items-center gap-2 rounded-xl glass px-3 py-2.5 focus-within:ring-1 focus-within:ring-ring">
                 <Lock size={16} className="text-muted-foreground" />
                 <input type="password" required minLength={6} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="At least 6 characters" className="w-full bg-transparent text-sm outline-none" />
+              </div>
+            </div>
+            <div>
+              <label className="text-xs font-medium text-muted-foreground">Preferred language</label>
+              <div className="mt-1 flex items-center gap-2 rounded-xl glass px-3 py-2.5 focus-within:ring-1 focus-within:ring-ring">
+                <Languages size={16} className="text-muted-foreground" />
+                <select value={language} onChange={(e) => setLanguage(e.target.value)} className="w-full bg-transparent text-sm outline-none [&>option]:bg-[#151B34]">
+                  {["English", "Tamil", "Malayalam", "Kannada", "Hindi"].map((l) => (
+                    <option key={l}>{l}</option>
+                  ))}
+                </select>
               </div>
             </div>
 
@@ -90,6 +108,14 @@ function Signup() {
               Create account
             </button>
           </form>
+
+          <div className="my-5 flex items-center gap-3 text-[10px] uppercase tracking-widest text-muted-foreground">
+            <span className="h-px flex-1 bg-white/10" /> or <span className="h-px flex-1 bg-white/10" />
+          </div>
+          <button onClick={onGoogle} className="inline-flex w-full items-center justify-center gap-2 rounded-xl glass py-2.5 text-sm font-medium hover:glow-soft">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#fff" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.8h5.4c-.2 1.3-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.3z"/><path fill="#fff" opacity=".8" d="M12 22c2.7 0 5-.9 6.6-2.5l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.7-5.6-4.1H3v2.6C4.7 19.8 8.1 22 12 22z"/><path fill="#fff" opacity=".6" d="M6.4 13.9c-.2-.6-.3-1.2-.3-1.9s.1-1.3.3-1.9V7.5H3C2.4 8.9 2 10.4 2 12s.4 3.1 1 4.5l3.4-2.6z"/><path fill="#fff" opacity=".9" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8C16.9 2.9 14.7 2 12 2 8.1 2 4.7 4.2 3 7.5l3.4 2.6C7.2 7.6 9.4 5.9 12 5.9z"/></svg>
+            Continue with Google
+          </button>
 
           <p className="mt-6 text-center text-xs text-muted-foreground">
             Already have an account?{" "}
