@@ -15,7 +15,9 @@ function Signup() {
   const { user } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [language, setLanguage] = useState("English");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -30,7 +32,7 @@ function Signup() {
       password,
       options: {
         emailRedirectTo: `${window.location.origin}/dashboard`,
-        data: { full_name: name },
+        data: { full_name: name, phone, language },
       },
     });
     setLoading(false);
@@ -40,6 +42,14 @@ function Signup() {
       toast.success("Account created! Check your email to verify.");
       navigate({ to: "/dashboard" });
     }
+  };
+
+  const onGoogle = async () => {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: { redirectTo: `${window.location.origin}/dashboard` },
+    });
+    if (error) toast.error(error.message);
   };
 
   return (
