@@ -3,6 +3,7 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Loader } from "@/components/Loader";
+import { Splash } from "@/components/Splash";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -71,6 +72,7 @@ function RootComponent() {
 
   return (
     <>
+      <Splash />
       <Loader />
       <Toaster richColors position="top-right" theme="dark" />
       <div className="relative min-h-screen overflow-x-hidden">
