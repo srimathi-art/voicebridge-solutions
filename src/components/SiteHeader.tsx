@@ -5,9 +5,10 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/integrations/supabase/client";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/#features", label: "Features", hash: true },
-  { to: "/#about", label: "About" , hash: true },
+  { to: "/dashboard", label: "Dashboard" },
+  { to: "/dashboard", label: "Meetings" },
+  { to: "/history", label: "History" },
+  { to: "/#features", label: "Features" },
 ] as const;
 
 export function SiteHeader() {
