@@ -46,28 +46,28 @@
 :root {
   --radius: 1rem;
 
-  /* Deep space base */
-  --background: oklch(0.14 0.04 270);
-  --foreground: oklch(0.97 0.01 250);
+  /* S2V premium palette */
+  --background: #0B1020;
+  --foreground: #F5F3FF;
 
-  --card: oklch(0.18 0.045 270);
-  --card-foreground: oklch(0.97 0.01 250);
+  --card: #1E1B4B;
+  --card-foreground: #F5F3FF;
 
-  --popover: oklch(0.18 0.045 270);
-  --popover-foreground: oklch(0.97 0.01 250);
+  --popover: #151B34;
+  --popover-foreground: #F5F3FF;
 
-  /* Brand: deep blue → violet */
-  --primary: oklch(0.62 0.22 275);
-  --primary-foreground: oklch(0.99 0 0);
+  /* Brand: indigo → violet */
+  --primary: #6D5EF5;
+  --primary-foreground: #FFFFFF;
 
-  --secondary: oklch(0.24 0.05 275);
-  --secondary-foreground: oklch(0.97 0.01 250);
+  --secondary: #151B34;
+  --secondary-foreground: #F5F3FF;
 
-  --muted: oklch(0.22 0.04 270);
-  --muted-foreground: rgb(154, 165, 184);
+  --muted: #151B34;
+  --muted-foreground: #B6BEDC;
 
-  --accent: oklch(0.72 0.2 290);
-  --accent-foreground: oklch(0.99 0 0);
+  --accent: #8B7CFF;
+  --accent-foreground: #FFFFFF;
 
   --destructive: oklch(0.62 0.24 25);
   --destructive-foreground: oklch(0.99 0 0);
