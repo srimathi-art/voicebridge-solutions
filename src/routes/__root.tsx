@@ -72,6 +72,7 @@ function RootComponent() {
 
   return (
     <>
+      <Splash />
       <Loader />
       <Toaster richColors position="top-right" theme="dark" />
       <div className="relative min-h-screen overflow-x-hidden">
