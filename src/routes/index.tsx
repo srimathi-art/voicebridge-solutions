@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowRight,
@@ -76,6 +76,14 @@ const useCases = [
 ];
 
 function Home() {
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+const handlePlay = async () => {
+  if (videoRef.current) {
+    await videoRef.current.play();
+    setIsPlaying(true);
+  }
+};
   return (
     <>
       {/* HERO */}
@@ -141,33 +149,33 @@ function Home() {
                 <div className="absolute inset-0 animate-pulse-glow rounded-full bg-gradient-brand opacity-40 blur-3xl" />
                 <div className="relative h-full w-full overflow-hidden glass-strong glow">
 
-  <div className="flex h-full w-max animate-[marquee_25s_linear_infinite]">
+                  <div className="flex h-full w-max animate-[marquee_25s_linear_infinite]">
 
-    {/* First set */}
-    <img src={hand} className="h-full w-auto object-cover" />
-    <img src={hand} className="h-full w-auto object-cover" />
-    <img src={hand} className="h-full w-auto object-cover" />
-    <img src={hand} className="h-full w-auto object-cover" />
+                    {/* First set */}
+                    <img src={hand} className="h-full w-auto object-cover" />
+                    <img src={hand} className="h-full w-auto object-cover" />
+                    <img src={hand} className="h-full w-auto object-cover" />
+                    <img src={hand} className="h-full w-auto object-cover" />
 
-    {/* Duplicate set for seamless loop */}
-    <img src={hand} className="h-full w-auto object-cover" />
-    <img src={hand} className="h-full w-auto object-cover" />
-    <img src={hand} className="h-full w-auto object-cover" />
-    <img src={hand} className="h-full w-auto object-cover" />
+                    {/* Duplicate set for seamless loop */}
+                    <img src={hand} className="h-full w-auto object-cover" />
+                    <img src={hand} className="h-full w-auto object-cover" />
+                    <img src={hand} className="h-full w-auto object-cover" />
+                    <img src={hand} className="h-full w-auto object-cover" />
 
-  </div>
+                  </div>
 
-  {/* Animation */}
-  <style>
-    {`
+                  {/* Animation */}
+                  <style>
+                    {`
       @keyframes marquee {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
       }
     `}
-  </style>
+                  </style>
 
-</div>
+                </div>
                 <div className="absolute -bottom-6 -left-6 hidden rounded-2xl glass-strong px-4 py-3 text-xs sm:block">
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <span className="inline-flex h-2 w-2 animate-pulse rounded-full bg-accent" />
@@ -385,29 +393,47 @@ function Home() {
 
           <Reveal>
             <div className="relative mx-auto mt-12 aspect-video max-w-5xl overflow-hidden rounded-[2rem] glass-strong glow">
-              <img
-                src={waveform}
-                alt="Demo preview"
-                width={1536}
-                height={768}
-                loading="lazy"
-                className="absolute inset-0 h-full w-full object-cover opacity-60"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-              <button
-                type="button"
-                aria-label="Play demo"
-                className="group absolute inset-0 flex items-center justify-center"
+
+              {/* Thumbnail Image */}
+              {!isPlaying && (
+                <img
+                  src={waveform}
+                  alt="Demo preview"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
+
+              {/* Video */}
+              <video
+                ref={videoRef}
+                controls
+                autoPlay
+                playsInline
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${isPlaying ? "opacity-100" : "opacity-0"
+                  }`}
               >
-                <span className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-gradient-brand glow transition-transform group-hover:scale-110">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
-                  <Play size={28} className="ml-1 text-primary-foreground" />
-                </span>
-              </button>
-              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between text-xs text-muted-foreground">
-                <span>Product demo · 1:42</span>
-                <span className="hidden sm:inline">Coming soon</span>
-              </div>
+                <source src="/demo_video.mp4" type="video/mp4" />
+              </video>
+
+              {/* Dark Overlay */}
+              {!isPlaying && (
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+              )}
+
+              {/* Play Button */}
+              {!isPlaying && (
+                <button
+                  type="button"
+                  aria-label="Play demo"
+                  onClick={handlePlay}
+                  className="group absolute inset-0 flex items-center justify-center"
+                >
+                  <span className="relative inline-flex h-24 w-24 items-center justify-center rounded-full bg-gradient-brand glow transition-transform group-hover:scale-110">
+                    <span className="absolute inset-0 animate-ping rounded-full bg-accent/40" />
+                    <Play size={28} className="ml-1 text-primary-foreground" />
+                  </span>
+                </button>
+              )}
             </div>
           </Reveal>
         </div>
