@@ -9,30 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ModulesRouteImport } from './routes/modules'
-import { Route as MeetRouteImport } from './routes/meet'
-import { Route as LectureRouteImport } from './routes/lecture'
-import { Route as ContactRouteImport } from './routes/contact'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as HistoryRouteImport } from './routes/history'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RoomRoomIdRouteImport } from './routes/room.$roomId'
 
-const ModulesRoute = ModulesRouteImport.update({
-  id: '/modules',
-  path: '/modules',
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MeetRoute = MeetRouteImport.update({
-  id: '/meet',
-  path: '/meet',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LectureRoute = LectureRouteImport.update({
-  id: '/lecture',
-  path: '/lecture',
+const HistoryRoute = HistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -40,73 +41,95 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RoomRoomIdRoute = RoomRoomIdRouteImport.update({
+  id: '/room/$roomId',
+  path: '/room/$roomId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/lecture': typeof LectureRoute
-  '/meet': typeof MeetRoute
-  '/modules': typeof ModulesRoute
+  '/dashboard': typeof DashboardRoute
+  '/history': typeof HistoryRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/room/$roomId': typeof RoomRoomIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/lecture': typeof LectureRoute
-  '/meet': typeof MeetRoute
-  '/modules': typeof ModulesRoute
+  '/dashboard': typeof DashboardRoute
+  '/history': typeof HistoryRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/room/$roomId': typeof RoomRoomIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/contact': typeof ContactRoute
-  '/lecture': typeof LectureRoute
-  '/meet': typeof MeetRoute
-  '/modules': typeof ModulesRoute
+  '/dashboard': typeof DashboardRoute
+  '/history': typeof HistoryRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/room/$roomId': typeof RoomRoomIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/lecture' | '/meet' | '/modules'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/history'
+    | '/login'
+    | '/signup'
+    | '/room/$roomId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/lecture' | '/meet' | '/modules'
-  id: '__root__' | '/' | '/contact' | '/lecture' | '/meet' | '/modules'
+  to: '/' | '/dashboard' | '/history' | '/login' | '/signup' | '/room/$roomId'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/history'
+    | '/login'
+    | '/signup'
+    | '/room/$roomId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ContactRoute: typeof ContactRoute
-  LectureRoute: typeof LectureRoute
-  MeetRoute: typeof MeetRoute
-  ModulesRoute: typeof ModulesRoute
+  DashboardRoute: typeof DashboardRoute
+  HistoryRoute: typeof HistoryRoute
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
+  RoomRoomIdRoute: typeof RoomRoomIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/modules': {
-      id: '/modules'
-      path: '/modules'
-      fullPath: '/modules'
-      preLoaderRoute: typeof ModulesRouteImport
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/meet': {
-      id: '/meet'
-      path: '/meet'
-      fullPath: '/meet'
-      preLoaderRoute: typeof MeetRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lecture': {
-      id: '/lecture'
-      path: '/lecture'
-      fullPath: '/lecture'
-      preLoaderRoute: typeof LectureRouteImport
+    '/history': {
+      id: '/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof HistoryRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -116,25 +139,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/room/$roomId': {
+      id: '/room/$roomId'
+      path: '/room/$roomId'
+      fullPath: '/room/$roomId'
+      preLoaderRoute: typeof RoomRoomIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ContactRoute: ContactRoute,
-  LectureRoute: LectureRoute,
-  MeetRoute: MeetRoute,
-  ModulesRoute: ModulesRoute,
+  DashboardRoute: DashboardRoute,
+  HistoryRoute: HistoryRoute,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
+  RoomRoomIdRoute: RoomRoomIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
